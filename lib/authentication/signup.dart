@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:health_recovary_app/authentication/authentication_service.dart';
 import 'package:health_recovary_app/authentication/login.dart';
 import 'package:health_recovary_app/disease_checker.dart';
+import 'package:health_recovary_app/menu.dart';
 import 'package:health_recovary_app/orders.dart';
 import 'package:health_recovary_app/validation.dart';
 
@@ -488,11 +489,11 @@ class _signupState extends State<signup> {
                                 print(details['first_name']);
                                 print(details['last_name']);
                                 await sign_up(details, email, password);
-
+                                Navigator.pop(context);
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Login()));
+                                        builder: (context) => Menu()));
                               }
                             },
                       child: Text(

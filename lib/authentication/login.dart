@@ -149,7 +149,7 @@ class _LoginState extends State<Login> {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Text(
-              "Already have an account?",
+              "Don't have an account yet?",
               style: GoogleFonts.notoSans(
                   fontSize: MediaQuery.of(context).size.height / 45,
                   color: Colors.black),
