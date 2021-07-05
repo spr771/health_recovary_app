@@ -17,7 +17,9 @@ sign_up(Map<String, dynamic> details, String email, String password) async {
     details['created_on'] = await NTP.now();
     print(details['first_name']);
     await firestore.collection('users').doc(user1.user.uid).set(details);
-    await firebase.signOut();
+    user = user1.user;
+    userDetails = details;
+    userDetails['created_on'] = DateTime.now();
   } catch (e) {}
 }
 
