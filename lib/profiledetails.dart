@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:health_recovary_app/authentication/authentication_service.dart';
 import 'package:health_recovary_app/chat/chats.dart';
 import 'package:health_recovary_app/database_calls.dart';
+import 'package:health_recovary_app/validation.dart';
 import 'package:intl/intl.dart';
 
 class profile extends StatefulWidget {
@@ -54,7 +55,9 @@ class _profileState extends State<profile> {
             if (chatRoomId == null) {
               chatRoomId = await createChatroom(
                   user.uid,
-                  userDetails['first_name'] + userDetails['last_name'],
+                  capitalize(userDetails['first_name']) +
+                      ' ' +
+                      capitalize(userDetails['last_name']),
                   widget.id,
                   widget.name);
             }

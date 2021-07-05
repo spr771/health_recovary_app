@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:health_recovary_app/authentication/authentication_service.dart';
 import 'package:health_recovary_app/profiledetails.dart';
+import 'package:health_recovary_app/validation.dart';
 import 'package:intl/intl.dart';
 
 class feed extends StatefulWidget {
@@ -11,6 +12,7 @@ class feed extends StatefulWidget {
 
 class _feedState extends State<feed> {
   bool notsearched = true;
+  bool found = false;
   List<QueryDocumentSnapshot> posts = [];
   String str;
   getposts(String value) async {
@@ -19,7 +21,13 @@ class _feedState extends State<feed> {
     print('object');
     await FirebaseFirestore.instance
         .collectionGroup('posts')
-        .where('topic', isEqualTo: value)
+        .where('topic', whereIn: [
+          value,
+          value.toLowerCase(),
+          capitalize(value.toLowerCase()),
+          value.toUpperCase(),
+          capitalize(value)
+        ])
         .orderBy('postTime', descending: true)
         .get()
         .then((QuerySnapshot querySnapshot) => {

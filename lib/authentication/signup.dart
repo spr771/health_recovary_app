@@ -482,8 +482,8 @@ class _signupState extends State<signup> {
                                   password != null &&
                                   con_password != null) {
                                 Map<String, dynamic> details = {
-                                  'first_name': firstname.trim().toLowerCase(),
-                                  'last_name': lastname.trim().toLowerCase(),
+                                  'first_name': capitalize(firstname),
+                                  'last_name': capitalize(lastname),
                                   'email': email,
                                 };
                                 print(details['first_name']);
